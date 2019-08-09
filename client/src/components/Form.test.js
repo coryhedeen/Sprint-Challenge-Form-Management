@@ -12,7 +12,14 @@ describe('<FormikLogin/>', () => {
     const click = jest.fn();
     const { getByText } = render(<LoginForm/>)
     const button = getByText(/^submit$/i);
-    fireEvent.click(button);
+    fireEvent.submit(button);
+    expect(click).toBeCalled();
+  })
+  it('works', () => {
+    const click = jest.fn();
+    const { getByText } = render(<FormikLogin />)
+    const function = getByText(/^handleSubmit$/i);
+    fireEvent.submit(function);
     expect(click).toBeCalled();
   })
 })
